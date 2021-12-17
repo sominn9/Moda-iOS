@@ -29,7 +29,7 @@ struct OnboardingView: View {
                     .foregroundColor(.accentColor)
                     .transition(.opacity)
                     .id(text[page - 1][0])
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, 20)
                 Spacer()
             }
             Spacer()
