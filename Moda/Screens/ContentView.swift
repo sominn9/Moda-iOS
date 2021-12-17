@@ -14,6 +14,8 @@ struct ContentView: View {
     var body: some View {
         if isOnboardingViewActive {
             OnboardingView()
+        } else {
+            HomeView()
         }
     }
 }

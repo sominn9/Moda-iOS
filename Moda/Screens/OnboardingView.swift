@@ -64,6 +64,8 @@ struct OnboardingView: View {
                     withAnimation {
                         if page <= 1 {
                             page += 1
+                        } else {
+                            isOnboardingViewActive = false
                         }
                     }
                 } label: {
@@ -77,7 +79,7 @@ struct OnboardingView: View {
                 }
             }
             
-        } //: ZStack
+        } //: VStack
         .onAppear {
             isAnimating = true
         }
