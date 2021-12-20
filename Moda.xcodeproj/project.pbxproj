@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CB74413A276C593000BF0A49 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB744139276C593000BF0A49 /* HomeView.swift */; };
+		CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95B7882770488C00AC58B3 /* MenuButton.swift */; };
+		CB95B78B277057D700AC58B3 /* WalkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95B78A277057D700AC58B3 /* WalkingView.swift */; };
 		CBE62CFD276C4BEC00A3CB35 /* ModaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */; };
 		CBE62CFF276C4BEC00A3CB35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62CFE276C4BEC00A3CB35 /* ContentView.swift */; };
 		CBE62D01276C4BED00A3CB35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE62D00276C4BED00A3CB35 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		CB744139276C593000BF0A49 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CB95B7882770488C00AC58B3 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		CB95B78A277057D700AC58B3 /* WalkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingView.swift; sourceTree = "<group>"; };
 		CBE62CF9276C4BEC00A3CB35 /* Moda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModaApp.swift; sourceTree = "<group>"; };
 		CBE62CFE276C4BEC00A3CB35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 		CBE62D26276C4BFD00A3CB35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CB95B7882770488C00AC58B3 /* MenuButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 				CBE62CFE276C4BEC00A3CB35 /* ContentView.swift */,
 				CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */,
 				CB744139276C593000BF0A49 /* HomeView.swift */,
+				CB95B78A277057D700AC58B3 /* WalkingView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -279,8 +285,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB95B78B277057D700AC58B3 /* WalkingView.swift in Sources */,
 				CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */,
 				CB74413A276C593000BF0A49 /* HomeView.swift in Sources */,
+				CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */,
 				CBE62CFF276C4BEC00A3CB35 /* ContentView.swift in Sources */,
 				CBE62CFD276C4BEC00A3CB35 /* ModaApp.swift in Sources */,
 			);
