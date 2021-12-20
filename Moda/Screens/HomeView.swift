@@ -14,7 +14,6 @@ struct HomeView: View {
     var body: some View {
         VStack {
             // MARK: - HEADER
-            Spacer()
             HStack {
                 VStack(alignment: .leading) {
                     Text("Moda")
@@ -24,72 +23,66 @@ struct HomeView: View {
                         .font(.system(.title3))
                         .fontWeight(.light)
                         .foregroundColor(.gray)
+                        .offset(y: -5)
                 }
-                .padding(.horizontal, 20)
                 Spacer()
             }
             
             // MARK: - CENTER
             Spacer()
-            Spacer()
-            Rectangle()
+            RoundedRectangle(cornerRadius: 20)
                 .fill(Color.accentColor)
-                .cornerRadius(20)
-                .frame(height: 370, alignment: .center)
-                .padding(.horizontal, 20)
+                .frame(height: 250, alignment: .center)
                 .overlay(alignment: .center) {
-                    Image("character-1")
+                    Image("pattern1")
+                        .resizable()
+                        .scaleEffect(CGSize(width: 1.0, height: -1.0))
+                        .offset(x: -150, y: -120)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .opacity(0.3)
+                    
+                    Image("pattern2")
+                        .resizable()
+                        .offset(x: 120, y: -100)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .opacity(0.3)
+                    
+                    Image("bao-black-kitten-4")
                         .resizable()
                         .scaledToFit()
-                        .offset(y: isAnimating ? -70 : -50)
+                        .offset(y: isAnimating ? -100 : -80)
                         .animation(.easeInOut(duration: 4).repeatForever(), value: isAnimating)
                     
-                    Text("Click to record")
-                        .font(.system(size: 20, weight: .regular))
+                    Text("클릭해서 산책시작")
+                        .font(.system(size: 17, weight: .regular))
                         .foregroundColor(.white)
-                        .offset(y: 150)
+                        .offset(y: 85)
+                        .opacity(0.9)
                 }
                 .scaleEffect(isAnimating ? 1 : 0.5)
                 .animation(.easeInOut(duration: 0.5), value: isAnimating)
+                .onTapGesture {
+                    print("tapped!")
+                }
             Spacer()
             
             // MARK: - FOOTER
-            HStack {
+            HStack(alignment: .center, spacing: 70) {
                 // 1. List Button
-                Button {
-                    
-                } label: {
-                    VStack {
-                        Image("list")
-                            .font(.system(size: 50, weight: .ultraLight))
-                            .foregroundColor(.primary)
-                        Text("List")
-                            .font(.system(size: 17))
-                            .fontWeight(.light)
-                            .foregroundColor(.primary)
-                    }
-                }
-                .padding()
-
+                MenuButton(menuIcon: "list", menuTitle: "List")
+                
                 // 2. Chart Button
-                Button {
-                    
-                } label: {
-                    VStack {
-                        Image("chart")
-                            .font(.system(size: 50, weight: .ultraLight))
-                            .foregroundColor(.primary)
-                        Text("Chart")
-                            .font(.system(size: 17))
-                            .fontWeight(.light)
-                            .foregroundColor(.primary)
-                    }
-                }
-                .padding()
+                MenuButton(menuIcon: "chart", menuTitle: "Chart")
+                
+                // 3. Later...
+                MenuButton(menuIcon: "setting", menuTitle: "Setting")
                 
             } //: FOOTER
-            Spacer()
+            .padding(.bottom, 30)
+            
         } //: VSTACK
+        .padding(.vertical, 20)
+        .padding(.horizontal, 20)
         .onAppear {
             isAnimating = true
         }
