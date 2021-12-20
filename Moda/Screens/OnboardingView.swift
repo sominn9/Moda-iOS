@@ -22,39 +22,39 @@ struct OnboardingView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 40) {
             // MARK: - HEADER
-            Spacer()
             HStack {
                 Text(text[page - 1][0])
                     .font(.system(size: 60, weight: .bold))
                     .foregroundColor(.accentColor)
                     .transition(.opacity)
                     .id(text[page - 1][0])
-                    .padding(.horizontal, 20)
                 Spacer()
             }
             Spacer()
             
             // MARK: - CENTER
-            ZStack {
-                Circle()
-                    .fill(Color.accentColor)
-                    .frame(width: 340, height: 340, alignment: .center)
-                    .opacity(isAnimating ? 1 : 0)
-                    .scaleEffect(isAnimating ? 1 : 0.5)
-                    .animation(.easeOut(duration: 1), value: isAnimating)
+            VStack {
+                ZStack {
+                    Circle()
+                        .fill(Color.accentColor)
+                        .frame(width: 340, height: 340, alignment: .center)
+                        .opacity(isAnimating ? 1 : 0)
+                        .scaleEffect(isAnimating ? 1 : 0.5)
+                        .animation(.easeOut(duration: 1), value: isAnimating)
+                    
+                    Image("onboarding" + String(page))
+                        .resizable()
+                        .scaledToFit()
+                        .padding()
+                }
                 
-                Image("onboarding" + String(page))
-                    .resizable()
-                    .scaledToFit()
-                    .padding(30)
+                Text(text[page - 1][1])
+                    .font(.system(.title3))
+                    .fontWeight(.light)
+                    .foregroundColor(.gray)
+                    .transition(.opacity)
+                    .id(text[page - 1][1])
             }
-            
-            Text(text[page - 1][1])
-                .font(.system(.title3))
-                .fontWeight(.light)
-                .foregroundColor(.gray)
-                .transition(.opacity)
-                .id(text[page - 1][1])
             
             // MARK: - FOOTER
             Spacer()
@@ -72,14 +72,14 @@ struct OnboardingView: View {
                     Text(text[page - 1][2])
                         .font(.system(.title3))
                         .foregroundColor(.primary)
-                        .padding(.horizontal, 30)
-                        .padding(.vertical, 10)
                         .transition(.opacity)
                         .id(text[page - 1][2])
                 }
             }
             
         } //: VStack
+        .padding(.vertical, 20)
+        .padding(.horizontal, 20)
         .onAppear {
             isAnimating = true
         }
