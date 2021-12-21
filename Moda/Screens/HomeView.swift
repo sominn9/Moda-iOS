@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var isAnimating: Bool = false
+    @State private var pushed: Bool = false
     
     var body: some View {
         NavigationView {
@@ -31,42 +32,48 @@ struct HomeView: View {
                 
                 // MARK: - CENTER
                 Spacer()
-                NavigationLink(destination: WalkingView()
-                                .navigationTitle("")
-                                .navigationBarHidden(true)) {
-                    
-                    // Click Button
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.accentColor)
-                        .frame(height: 250, alignment: .center)
-                        .overlay(alignment: .center) {
-                            Image("pattern1")
-                                .resizable()
-                                .scaleEffect(CGSize(width: 1.0, height: -1.0))
-                                .offset(x: -150, y: -120)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .opacity(0.3)
-                            
-                            Image("pattern2")
-                                .resizable()
-                                .offset(x: 120, y: -100)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .opacity(0.3)
-                            
-                            Image("bao-black-kitten-4")
-                                .resizable()
-                                .scaledToFit()
-                                .offset(y: isAnimating ? -100 : -80)
-                                .animation(.easeInOut(duration: 4).repeatForever(), value: isAnimating)
-                            
-                            Text("클릭해서 산책시작")
-                                .font(.system(size: 17, weight: .regular))
-                                .foregroundColor(.white)
-                                .offset(y: 85)
-                                .opacity(0.9)
-                        } //: OVERLAY
-                        .scaleEffect(isAnimating ? 1 : 0.5)
-                        .animation(.easeInOut(duration: 0.5), value: isAnimating)
+                VStack {
+                    NavigationLink(destination: WalkingView(pushed: self.$pushed)
+                                    .navigationTitle("")
+                                    .navigationBarHidden(true)
+                                   , isActive: self.$pushed) {
+                        
+                        // Click Button
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color.accentColor)
+                            .frame(height: 250, alignment: .center)
+                            .overlay(alignment: .center) {
+                                Image("pattern1")
+                                    .resizable()
+                                    .scaleEffect(CGSize(width: 1.0, height: -1.0))
+                                    .offset(x: -150, y: -120)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                                    .opacity(0.3)
+                                
+                                Image("pattern2")
+                                    .resizable()
+                                    .offset(x: 120, y: -100)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                                    .opacity(0.3)
+                                
+                                Image("bao-black-kitten-4")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .offset(y: isAnimating ? -100 : -80)
+                                    .animation(.easeInOut(duration: 4).repeatForever(), value: isAnimating)
+                                
+                                Text("클릭해서 산책시작")
+                                    .font(.system(size: 17, weight: .regular))
+                                    .foregroundColor(.white)
+                                    .offset(y: 85)
+                                    .opacity(0.9)
+                            } //: OVERLAY
+                            .scaleEffect(isAnimating ? 1 : 0.5)
+                            .animation(.easeInOut(duration: 0.5), value: isAnimating)
+                            .onTapGesture {
+                                self.pushed = true
+                            }
+                    }
                 }
                 Spacer()
                 
