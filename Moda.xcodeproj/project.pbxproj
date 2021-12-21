@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB0B15E2277063FE00C8561C /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0B15E1277063FE00C8561C /* ResultView.swift */; };
 		CB74413A276C593000BF0A49 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB744139276C593000BF0A49 /* HomeView.swift */; };
 		CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95B7882770488C00AC58B3 /* MenuButton.swift */; };
 		CB95B78B277057D700AC58B3 /* WalkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95B78A277057D700AC58B3 /* WalkingView.swift */; };
@@ -18,6 +19,8 @@
 		CBE62D18276C4BED00A3CB35 /* ModaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62D17276C4BED00A3CB35 /* ModaUITests.swift */; };
 		CBE62D1A276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62D19276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift */; };
 		CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */; };
+		CBECEE5527718F4400032BF9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECEE5427718F4400032BF9 /* CustomButton.swift */; };
+		CBECEE59277196F600032BF9 /* StepCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECEE58277196F600032BF9 /* StepCounter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB0B15E1277063FE00C8561C /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		CB744139276C593000BF0A49 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CB95B7882770488C00AC58B3 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		CB95B78A277057D700AC58B3 /* WalkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingView.swift; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 		CBE62D17276C4BED00A3CB35 /* ModaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModaUITests.swift; sourceTree = "<group>"; };
 		CBE62D19276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		CBECEE5427718F4400032BF9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		CBECEE58277196F600032BF9 /* StepCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB0B15E027705B2F00C8561C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CBE62CF0276C4BEC00A3CB35 = {
 			isa = PBXGroup;
 			children = (
@@ -104,8 +117,10 @@
 			children = (
 				CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */,
 				CBE62D00276C4BED00A3CB35 /* Assets.xcassets */,
+				CBECEE57277196C900032BF9 /* Utilities */,
 				CBE62D26276C4BFD00A3CB35 /* Views */,
 				CBE62D27276C4C0200A3CB35 /* Screens */,
+				CB0B15E027705B2F00C8561C /* Extensions */,
 				CBE62D02276C4BED00A3CB35 /* Preview Content */,
 			);
 			path = Moda;
@@ -140,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				CB95B7882770488C00AC58B3 /* MenuButton.swift */,
+				CBECEE5427718F4400032BF9 /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,8 +167,17 @@
 				CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */,
 				CB744139276C593000BF0A49 /* HomeView.swift */,
 				CB95B78A277057D700AC58B3 /* WalkingView.swift */,
+				CB0B15E1277063FE00C8561C /* ResultView.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		CBECEE57277196C900032BF9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CBECEE58277196F600032BF9 /* StepCounter.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,10 +311,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB95B78B277057D700AC58B3 /* WalkingView.swift in Sources */,
+				CBECEE59277196F600032BF9 /* StepCounter.swift in Sources */,
 				CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */,
 				CB74413A276C593000BF0A49 /* HomeView.swift in Sources */,
 				CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */,
+				CBECEE5527718F4400032BF9 /* CustomButton.swift in Sources */,
 				CBE62CFF276C4BEC00A3CB35 /* ContentView.swift in Sources */,
+				CB0B15E2277063FE00C8561C /* ResultView.swift in Sources */,
 				CBE62CFD276C4BEC00A3CB35 /* ModaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
