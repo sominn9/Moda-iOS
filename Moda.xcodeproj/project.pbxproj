@@ -20,7 +20,6 @@
 		CBE62D1A276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62D19276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift */; };
 		CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */; };
 		CBECEE5527718F4400032BF9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECEE5427718F4400032BF9 /* CustomButton.swift */; };
-		CBECEE59277196F600032BF9 /* StepCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECEE58277196F600032BF9 /* StepCounter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +56,6 @@
 		CBE62D19276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		CBECEE5427718F4400032BF9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		CBECEE58277196F600032BF9 /* StepCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +173,6 @@
 		CBECEE57277196C900032BF9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				CBECEE58277196F600032BF9 /* StepCounter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -311,7 +308,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB95B78B277057D700AC58B3 /* WalkingView.swift in Sources */,
-				CBECEE59277196F600032BF9 /* StepCounter.swift in Sources */,
 				CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */,
 				CB74413A276C593000BF0A49 /* HomeView.swift in Sources */,
 				CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */,
