@@ -7,16 +7,17 @@
 
 import SwiftUI
 import CoreMotion
+import MapKit
 
 struct WalkingView: View {
 
+    private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     private let pedometer = CMPedometer()
     private var isPedometerAvailable: Bool {
         return CMPedometer.isPedometerEventTrackingAvailable() &&
             CMPedometer.isDistanceAvailable() &&
             CMPedometer.isStepCountingAvailable()
     }
-    private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
     @Binding var pushed: Bool
     
@@ -24,7 +25,7 @@ struct WalkingView: View {
     @State private var currentTime: Int = 0
     @State private var currentTimeString: String = "00:00:00"
     @State private var steps: Int = 0
-    
+        
     private func initializePedometer() {
         if isPedometerAvailable {
             pedometer.startUpdates(from: .now) { data, error in
@@ -62,9 +63,11 @@ struct WalkingView: View {
                         currentTimeString = timeToString(currentTime)
                     }
                     .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                        // 앱이 백그라운드로 간 시각을 저장한다
                         UserDefaults.standard.set(Date(), forKey: "startTime")
                     }
                     .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+                        // 백그라운드에서 머문 시간을 계산해서 타이머에 더해준다
                         let now = Date()
                         let startTime = UserDefaults.standard.object(forKey: "startTime") as? Date
                         let interval = now.timeIntervalSince(startTime ?? now)
@@ -74,43 +77,46 @@ struct WalkingView: View {
                 
                 // MARK: - CENTER
                 Spacer()
-                VStack {
-                    ZStack {
-                        Circle()
-                            .fill(.black)
-                            .opacity(0.2)
-                        
-                        Image("bao-black-kitten-5")
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color("ColorDarkRed"))
+                    .background(content: {
+                        Image("bao-black-kitten-2")
                             .resizable()
                             .scaledToFit()
-                            .padding(50)
-                            .scaleEffect(isAnimating ? 1.0 : 0.5)
-                            .animation(.spring(), value: isAnimating)
+                            .padding()
+                            .offset(y: isAnimating ? -130 : -50)
+                            .animation(.easeOut(duration: 2), value: isAnimating)
+                    })
+                    .overlay(alignment: .center) {
+                        VStack(spacing: 0) {
+                            Text("걸음수: \(steps)")
+                                .font(.system(size: 17, weight: .regular))
+                                .foregroundColor(.white)
+                                .padding(.vertical, 15)
+                            
+                            MapView()
+                        }
                     }
-                    
-                    Text("걸음수: \(steps)")
-                        .font(.system(size: 17, weight: .regular))
-                    
-                } //: CENTER
+                    .frame(height: 430, alignment: .center)
+                    .padding(.top, 75)
                 Spacer()
                 
                 // MARK: - FOOTER
-                NavigationLink(destination: ResultView()
+                NavigationLink(destination: ResultView(pushed: $pushed)
                                 .navigationTitle("")
                                 .navigationBarHidden(true)) {
+                    Text("종료하기")
                     
-                    // Stop Button
-                    Button("종료하기") {
-                        self.pushed = false
-                        self.timer.upstream.connect().cancel()
-                    }
-                    .buttonStyle(CustomButton())
-
                 } //: FOOTER
+                .onTapGesture {
+                    self.timer.upstream.connect().cancel()
+                }
+                .buttonStyle(CustomButton())
                 
             } //: VSTACK
-            .padding(.vertical, 20)
-            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
+            .padding(.horizontal, 10)
+            
         } //: ZSTACK
         .onAppear {
             isAnimating = true

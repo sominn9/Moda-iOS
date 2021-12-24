@@ -20,6 +20,7 @@
 		CBE62D1A276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62D19276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift */; };
 		CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */; };
 		CBECEE5527718F4400032BF9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECEE5427718F4400032BF9 /* CustomButton.swift */; };
+		CBFEF01227759F23000682AB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFEF01127759F23000682AB /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		CBE62D19276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		CBECEE5427718F4400032BF9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		CBFEF01127759F23000682AB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			children = (
 				CB95B7882770488C00AC58B3 /* MenuButton.swift */,
 				CBECEE5427718F4400032BF9 /* CustomButton.swift */,
+				CBFEF01127759F23000682AB /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				CBECEE5527718F4400032BF9 /* CustomButton.swift in Sources */,
 				CBE62CFF276C4BEC00A3CB35 /* ContentView.swift in Sources */,
 				CB0B15E2277063FE00C8561C /* ResultView.swift in Sources */,
+				CBFEF01227759F23000682AB /* MapView.swift in Sources */,
 				CBE62CFD276C4BEC00A3CB35 /* ModaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,6 +482,7 @@
 				DEVELOPMENT_TEAM = 36N4X279LQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires to access location data.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "This app requires to access motion data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -508,6 +513,7 @@
 				DEVELOPMENT_TEAM = 36N4X279LQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires to access location data.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "This app requires to access motion data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
