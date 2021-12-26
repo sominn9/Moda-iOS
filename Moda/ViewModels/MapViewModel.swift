@@ -11,10 +11,13 @@ class MapViewModel: NSObject, ObservableObject {
     
     var locationManager: CLLocationManager?
     
-    @Published var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914),
-        span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
-    )
+//    @Published var region = MKCoordinateRegion(
+//        center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914),
+//        span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//    )
+    
+    @Published var source = CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914)
+    @Published var destination = CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914)
     
     func checkIfLocationServiceEnabled() {
         if CLLocationManager.locationServicesEnabled() {
@@ -32,19 +35,20 @@ class MapViewModel: NSObject, ObservableObject {
         guard let locationManager = locationManager else { return }
         
         switch locationManager.authorizationStatus {
-            case .notDetermined:
-                locationManager.requestWhenInUseAuthorization()
-            case .restricted:
-                print("Location service is restricted")
-            case .denied:
-                print("Location service is denied")
-            case .authorizedAlways, .authorizedWhenInUse:
-                region = MKCoordinateRegion(
-                    center: locationManager.location!.coordinate,
-                    span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                )
-            @unknown default:
-                break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            print("Location service is restricted")
+        case .denied:
+            print("Location service is denied")
+        case .authorizedAlways, .authorizedWhenInUse:
+            source = locationManager.location!.coordinate
+//            region = MKCoordinateRegion(
+//                center: locationManager.location!.coordinate,
+//                span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//            )
+        @unknown default:
+            break
         }
     }
     
@@ -59,9 +63,8 @@ extension MapViewModel: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
-            region.center = CLLocationCoordinate2D(
-                latitude: lastLocation.coordinate.latitude,
-                longitude: lastLocation.coordinate.longitude)
+//            region.center = lastLocation.coordinate
+            destination = lastLocation.coordinate
         }
     }
     
