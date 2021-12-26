@@ -20,6 +20,7 @@
 		CBE62D1A276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62D19276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift */; };
 		CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */; };
 		CBECEE5527718F4400032BF9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECEE5427718F4400032BF9 /* CustomButton.swift */; };
+		CBF4EEA327784C5200563107 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF4EEA227784C5200563107 /* MapViewModel.swift */; };
 		CBFEF01227759F23000682AB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFEF01127759F23000682AB /* MapView.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,8 @@
 		CBE62D19276C4BED00A3CB35 /* ModaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CBE62D28276C4C9300A3CB35 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		CBECEE5427718F4400032BF9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		CBF4EEA0277841AC00563107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CBF4EEA227784C5200563107 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		CBFEF01127759F23000682AB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,10 +118,12 @@
 		CBE62CFB276C4BEC00A3CB35 /* Moda */ = {
 			isa = PBXGroup;
 			children = (
+				CBF4EEA0277841AC00563107 /* Info.plist */,
 				CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */,
 				CBE62D00276C4BED00A3CB35 /* Assets.xcassets */,
 				CBECEE57277196C900032BF9 /* Utilities */,
 				CBE62D26276C4BFD00A3CB35 /* Views */,
+				CBF4EEA127784C3C00563107 /* ViewModels */,
 				CBE62D27276C4C0200A3CB35 /* Screens */,
 				CB0B15E027705B2F00C8561C /* Extensions */,
 				CBE62D02276C4BED00A3CB35 /* Preview Content */,
@@ -178,6 +183,14 @@
 			children = (
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		CBF4EEA127784C3C00563107 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CBF4EEA227784C5200563107 /* MapViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB95B78B277057D700AC58B3 /* WalkingView.swift in Sources */,
+				CBF4EEA327784C5200563107 /* MapViewModel.swift in Sources */,
 				CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */,
 				CB74413A276C593000BF0A49 /* HomeView.swift in Sources */,
 				CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */,
@@ -482,6 +496,7 @@
 				DEVELOPMENT_TEAM = 36N4X279LQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Moda/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires to access location data.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "This app requires to access motion data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -513,6 +528,7 @@
 				DEVELOPMENT_TEAM = 36N4X279LQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Moda/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires to access location data.";
 				INFOPLIST_KEY_NSMotionUsageDescription = "This app requires to access motion data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
