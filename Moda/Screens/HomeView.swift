@@ -92,8 +92,8 @@ struct HomeView: View {
                 .padding(.bottom, 30)
                 
             } //: VSTACK
-            .padding(.vertical, 20)
-            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
+            .padding(.horizontal, 10)
             .onAppear {
                 isAnimating = true
             }

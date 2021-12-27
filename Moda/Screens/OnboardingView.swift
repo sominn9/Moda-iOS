@@ -38,11 +38,11 @@ struct OnboardingView: View {
                     Circle()
                         .fill(Color.accentColor)
                         .frame(width: 340, height: 340, alignment: .center)
-                        .opacity(isAnimating ? 1 : 0)
+                        .opacity(isAnimating ? 0.2 : 0)
                         .scaleEffect(isAnimating ? 1 : 0.5)
                         .animation(.easeOut(duration: 1), value: isAnimating)
                     
-                    Image("onboarding" + String(page))
+                    Image("onboarding")
                         .resizable()
                         .scaledToFit()
                         .padding()
@@ -78,8 +78,8 @@ struct OnboardingView: View {
             }
             
         } //: VStack
-        .padding(.vertical, 20)
-        .padding(.horizontal, 20)
+        .padding(.vertical, 10)
+        .padding(.horizontal, 10)
         .onAppear {
             isAnimating = true
         }
