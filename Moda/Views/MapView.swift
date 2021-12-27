@@ -22,6 +22,8 @@ struct MapView: UIViewRepresentable {
         // Create MKMapView and configure it
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
+        mapView.tintColor = .systemPink
+        mapView.setUserTrackingMode(.follow, animated: true)
 
         // Request permission
         viewModel.checkIfLocationServiceEnabled()
@@ -35,25 +37,13 @@ struct MapView: UIViewRepresentable {
     }
     
     private func drawRoute(_ view: MKMapView) {
-        if let source = viewModel.points.first, let destination = viewModel.points.last {
+        if let destination = viewModel.points.last {
             // Set the region
             let region = MKCoordinateRegion(
                 center: destination,
-                span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                span: .init(latitudeDelta: 0.005, longitudeDelta: 0.005)
             )
-            view.setRegion(region, animated: true)
-            
-            // Set the annotation
-            let sourceAnnotation = MKPointAnnotation()
-            sourceAnnotation.coordinate = source
-            sourceAnnotation.title = "출발지"
-            
-            let destinationAnnotation = MKPointAnnotation()
-            destinationAnnotation.coordinate = destination
-            destinationAnnotation.title = "도착지"
-            
-            view.removeAnnotations(view.annotations)
-            view.showAnnotations([destinationAnnotation, sourceAnnotation], animated: true)
+            view.setRegion(region, animated: false)
         }
         
         if viewModel.points.count != 0 {
