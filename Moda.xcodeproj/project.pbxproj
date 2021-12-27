@@ -10,6 +10,10 @@
 		5C7DBF155671F58C96A36125 /* Pods_Moda_ModaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17993514A0BD8466FCD62F74 /* Pods_Moda_ModaUITests.framework */; };
 		CB0B15E2277063FE00C8561C /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0B15E1277063FE00C8561C /* ResultView.swift */; };
 		CB74413A276C593000BF0A49 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB744139276C593000BF0A49 /* HomeView.swift */; };
+		CB93537427799D3100B0BDA7 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93537327799D3100B0BDA7 /* Diary.swift */; };
+		CB9353792779AE1300B0BDA7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9353782779AE1300B0BDA7 /* Location.swift */; };
+		CB93537B277A1D7100B0BDA7 /* RoundedTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93537A277A1D7100B0BDA7 /* RoundedTextEditor.swift */; };
+		CB93537E277A257000B0BDA7 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93537D277A257000B0BDA7 /* View+Extension.swift */; };
 		CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95B7882770488C00AC58B3 /* MenuButton.swift */; };
 		CB95B78B277057D700AC58B3 /* WalkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95B78A277057D700AC58B3 /* WalkingView.swift */; };
 		CBE62CFD276C4BEC00A3CB35 /* ModaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */; };
@@ -54,6 +58,10 @@
 		CB0B15E1277063FE00C8561C /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		CB42BC95AE378EEF99199768 /* Pods_Moda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB744139276C593000BF0A49 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CB93537327799D3100B0BDA7 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
+		CB9353782779AE1300B0BDA7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		CB93537A277A1D7100B0BDA7 /* RoundedTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextEditor.swift; sourceTree = "<group>"; };
+		CB93537D277A257000B0BDA7 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		CB95B7882770488C00AC58B3 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		CB95B78A277057D700AC58B3 /* WalkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingView.swift; sourceTree = "<group>"; };
 		CBE62CF9276C4BEC00A3CB35 /* Moda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moda.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,8 +137,18 @@
 		CB935372277975CB00B0BDA7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CB93537327799D3100B0BDA7 /* Diary.swift */,
+				CB9353782779AE1300B0BDA7 /* Location.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CB93537C277A255600B0BDA7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CB93537D277A257000B0BDA7 /* View+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CBE62CF0276C4BEC00A3CB35 = {
@@ -165,6 +183,7 @@
 				CB935372277975CB00B0BDA7 /* Models */,
 				CBF4EEA127784C3C00563107 /* ViewModels */,
 				CBE62D27276C4C0200A3CB35 /* Screens */,
+				CB93537C277A255600B0BDA7 /* Extensions */,
 				CBE62D02276C4BED00A3CB35 /* Preview Content */,
 			);
 			path = Moda;
@@ -201,6 +220,7 @@
 				CB95B7882770488C00AC58B3 /* MenuButton.swift */,
 				CBECEE5427718F4400032BF9 /* CustomButton.swift */,
 				CBFEF01127759F23000682AB /* MapView.swift */,
+				CB93537A277A1D7100B0BDA7 /* RoundedTextEditor.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -467,11 +487,15 @@
 				CBF4EEA327784C5200563107 /* MapViewModel.swift in Sources */,
 				CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */,
 				CB74413A276C593000BF0A49 /* HomeView.swift in Sources */,
+				CB93537427799D3100B0BDA7 /* Diary.swift in Sources */,
 				CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */,
 				CBECEE5527718F4400032BF9 /* CustomButton.swift in Sources */,
 				CBE62CFF276C4BEC00A3CB35 /* ContentView.swift in Sources */,
 				CB0B15E2277063FE00C8561C /* ResultView.swift in Sources */,
 				CBFEF01227759F23000682AB /* MapView.swift in Sources */,
+				CB9353792779AE1300B0BDA7 /* Location.swift in Sources */,
+				CB93537B277A1D7100B0BDA7 /* RoundedTextEditor.swift in Sources */,
+				CB93537E277A257000B0BDA7 /* View+Extension.swift in Sources */,
 				CBE62CFD276C4BEC00A3CB35 /* ModaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
