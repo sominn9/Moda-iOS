@@ -9,11 +9,13 @@ import SwiftUI
 
 struct CustomButton: ButtonStyle {
     
+    var colorName: String
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
-            .background(Color("ColorRed"))
+            .background(Color(colorName))
             .foregroundColor(.white)
             .font(.system(size: 18, weight: .medium))
             .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -29,7 +31,7 @@ struct CustomButtonView: View {
             
         }
         .padding([.leading, .trailing], 20)
-        .buttonStyle(CustomButton())
+        .buttonStyle(CustomButton(colorName: "ColorRed"))
     }
 }
 

@@ -82,10 +82,17 @@ struct ResultView: View {
                     RoundedTextEditor(text: memo)
                     
                     // Button
-                    Button("저장하기") {
-                        self.pushed = false
+                    HStack {
+                        Button("삭제하기") {
+                            
+                        }
+                        .buttonStyle(CustomButton(colorName: "ColorDarkRed"))
+                        
+                        Button("저장하기") {
+                            self.pushed = false
+                        }
+                        .buttonStyle(CustomButton(colorName: "ColorRed"))
                     }
-                    .buttonStyle(CustomButton())
                 }
                 .padding([.vertical, .horizontal], 10)
                 .padding(.bottom, 30)

@@ -20,7 +20,7 @@ struct MenuButton: View {
                 VStack {
                     Image(menuIcon)
                         .font(.system(size: 80, weight: .ultraLight))
-                        .foregroundColor(.primary)
+                        .tint(.primary)
                     Text(menuTitle)
                         .font(.system(size: 17))
                         .fontWeight(.light)

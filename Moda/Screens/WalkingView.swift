@@ -78,7 +78,7 @@ struct WalkingView: View {
                 // MARK: - CENTER
                 Spacer()
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("ColorDarkRed"))
+                    .fill(Color("ColorRed"))
                     .background(content: {
                         Image("bao-black-kitten-2")
                             .resizable()
@@ -98,7 +98,7 @@ struct WalkingView: View {
                         }
                     }
                     .frame(height: 430, alignment: .center)
-                    .padding(.top, 75)
+                    .padding(.top, 100)
                 Spacer()
                 
                 // MARK: - FOOTER
@@ -111,7 +111,7 @@ struct WalkingView: View {
                 .onTapGesture {
                     self.timer.upstream.connect().cancel()
                 }
-                .buttonStyle(CustomButton())
+                .buttonStyle(CustomButton(colorName: "ColorRed"))
                 
             } //: VSTACK
             .padding(.vertical, 10)
