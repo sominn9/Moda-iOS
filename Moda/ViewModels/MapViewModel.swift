@@ -11,13 +11,7 @@ class MapViewModel: NSObject, ObservableObject {
     
     var locationManager: CLLocationManager?
     
-//    @Published var region = MKCoordinateRegion(
-//        center: CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914),
-//        span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
-//    )
-    
-    @Published var source = CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914)
-    @Published var destination = CLLocationCoordinate2D(latitude: 37.5666791, longitude: 126.9782914)
+    @Published var points = [CLLocationCoordinate2D]()
     
     func checkIfLocationServiceEnabled() {
         if CLLocationManager.locationServicesEnabled() {
@@ -42,11 +36,7 @@ class MapViewModel: NSObject, ObservableObject {
         case .denied:
             print("Location service is denied")
         case .authorizedAlways, .authorizedWhenInUse:
-            source = locationManager.location!.coordinate
-//            region = MKCoordinateRegion(
-//                center: locationManager.location!.coordinate,
-//                span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
-//            )
+            points.append(locationManager.location!.coordinate)
         @unknown default:
             break
         }
@@ -63,8 +53,7 @@ extension MapViewModel: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let lastLocation = locations.last {
-//            region.center = lastLocation.coordinate
-            destination = lastLocation.coordinate
+            points.append(lastLocation.coordinate)
         }
     }
     

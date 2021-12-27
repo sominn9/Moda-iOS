@@ -21,11 +21,6 @@ struct MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         // Create MKMapView and configure it
         let mapView = MKMapView()
-        let region = MKCoordinateRegion(
-            center: viewModel.source,
-            span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        )
-        mapView.setRegion(region, animated: true)
         mapView.delegate = context.coordinator
 
         // Request permission
@@ -40,29 +35,30 @@ struct MapView: UIViewRepresentable {
     }
     
     private func drawRoute(_ view: MKMapView) {
-        // Set the source and destination
-        let source = MKPlacemark(
-            coordinate: viewModel.source
-        )
-
-        let destination = MKPlacemark(
-            coordinate: viewModel.destination
-        )
+        if let source = viewModel.points.first, let destination = viewModel.points.last {
+            // Set the region
+            let region = MKCoordinateRegion(
+                center: destination,
+                span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            )
+            view.setRegion(region, animated: true)
+            
+            // Set the annotation
+            let sourceAnnotation = MKPointAnnotation()
+            sourceAnnotation.coordinate = source
+            sourceAnnotation.title = "출발지"
+            
+            let destinationAnnotation = MKPointAnnotation()
+            destinationAnnotation.coordinate = destination
+            destinationAnnotation.title = "도착지"
+            
+            view.removeAnnotations(view.annotations)
+            view.showAnnotations([destinationAnnotation, sourceAnnotation], animated: true)
+        }
         
-        // Create MKDirections.Request
-        let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: source)
-        request.destination = MKMapItem(placemark: destination)
-        request.transportType = .walking
-
-        // Create MKDirections
-        let directions = MKDirections(request:  request)
-        
-        // Calculate path and draw it
-        directions.calculate { response, error in
-            guard let route = response?.routes.first else { return }
-            view.addAnnotations([source, destination])
-            view.addOverlay(route.polyline)
+        if viewModel.points.count != 0 {
+            let geodesic = MKGeodesicPolyline(coordinates: viewModel.points, count: viewModel.points.count)
+            view.addOverlay(geodesic)
         }
     }
     
@@ -76,5 +72,3 @@ struct MapView: UIViewRepresentable {
     }
     
 }
-
-
