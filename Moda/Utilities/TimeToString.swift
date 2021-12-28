@@ -39,7 +39,7 @@ func timeToString(_ time: Int, format: Int) -> String {
         result += hourString
         result += (minuteString != "" ? " " + minuteString : "")
         result += (secondString != "" ? " " + secondString : "")
-        return result
+        return return result.trimmingCharacters(in: .whitespaces)
     default:
         fatalError()
     }
