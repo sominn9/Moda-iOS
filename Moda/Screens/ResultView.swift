@@ -64,7 +64,7 @@ struct ResultView: View {
                                 VStack(alignment: .leading, spacing: 5) {
                                     Text("\(steps)")
                                         .font(.system(.title2))
-                                    Text("걸음수")
+                                    Text("걸음 수")
                                 }
                                 Spacer()
                             }
@@ -91,12 +91,13 @@ struct ResultView: View {
                 VStack(spacing: 15) {
                     let _ = print(Realm.Configuration.defaultConfiguration.fileURL!)
                     
+                    // Rounded Text Editor
+                    RoundedTextEditor(memo: $memo)
+                        .padding(.top, 5)
+                    
                     // Map
                     MapView(viewModel: MapViewModel(with: walk.points.map { $0.coordinate }))
                         .frame(height: 350)
-                    
-                    // Rounded Text Editor
-                    RoundedTextEditor(memo: $memo)
                     
                     // Button                    
                     HStack {
