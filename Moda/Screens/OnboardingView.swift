@@ -15,8 +15,8 @@ struct OnboardingView: View {
     @State private var page: Int = 1
     
     @State private var text: [[String]] = [
-        ["Walk.", "Record your walk.", "NEXT"],
-        ["Diary.", "You can record the walking route.", "START"]
+        ["Walk.", "매일 매일의 산책을 기록하세요.", "NEXT"],
+        ["Record.", "산책 경로를 저장했다가 나중에 다시 볼 수 있습니다.", "START"]
     ]
     
     var body: some View {
@@ -25,7 +25,7 @@ struct OnboardingView: View {
             HStack {
                 Text(text[page - 1][0])
                     .font(.system(size: 60, weight: .bold))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(Color("ColorRed"))
                     .transition(.opacity)
                     .id(text[page - 1][0])
                 Spacer()
@@ -36,7 +36,7 @@ struct OnboardingView: View {
             VStack {
                 ZStack {
                     Circle()
-                        .fill(Color.accentColor)
+                        .fill(Color.gray)
                         .frame(width: 340, height: 340, alignment: .center)
                         .opacity(isAnimating ? 0.2 : 0)
                         .scaleEffect(isAnimating ? 1 : 0.5)
@@ -47,13 +47,19 @@ struct OnboardingView: View {
                         .scaledToFit()
                         .padding()
                 }
-                
-                Text(text[page - 1][1])
-                    .font(.system(.title3))
-                    .fontWeight(.light)
-                    .foregroundColor(.gray)
-                    .transition(.opacity)
-                    .id(text[page - 1][1])
+                .offset(y: -20)
+                .overlay(alignment: .bottom) {
+                    Text(text[page - 1][1])
+                        .font(.system(.body))
+                        .fontWeight(.light)
+                        .foregroundColor(.gray)
+                        .lineSpacing(7)
+                        .multilineTextAlignment(.center)
+                        .transition(.opacity)
+                        .padding(20)
+                        .offset(y: 50)
+                        .id(text[page - 1][1])
+                }
             }
             
             // MARK: - FOOTER
@@ -75,6 +81,7 @@ struct OnboardingView: View {
                         .transition(.opacity)
                         .id(text[page - 1][2])
                 }
+                .padding(10)
             }
             
         } //: VStack
