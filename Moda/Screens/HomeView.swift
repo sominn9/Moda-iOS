@@ -67,12 +67,10 @@ struct HomeView: View {
                                     .foregroundColor(.white)
                                     .offset(y: 85)
                                     .opacity(0.9)
+                                
                             } //: OVERLAY
                             .scaleEffect(isAnimating ? 1 : 0.5)
                             .animation(.easeInOut(duration: 0.5), value: isAnimating)
-                            .onTapGesture {
-                                self.pushed = true
-                            }
                     }
                 }
                 Spacer()
