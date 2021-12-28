@@ -39,23 +39,6 @@ struct WalkingView: View {
         }
     }
     
-    private func timeToString(_ time: Int) -> String {
-        var time: Int = time
-        var second: Int = 0
-        var minute: Int = 0
-        var hour: Int = 0
-
-        // seconds
-        second = time % 60
-        time /= 60
-
-        // minutes, hours
-        minute = time % 60
-        hour = time / 60
-        
-        return String(format: "%02d:%02d:%02d", hour, minute, second)
-    }
-    
     var body: some View {
         ZStack {
             VStack(alignment: .center, spacing: 20) {
@@ -64,7 +47,7 @@ struct WalkingView: View {
                     .font(.system(size: 55, weight: .bold))
                     .onReceive(timer) { _ in
                         currentTime += 1
-                        currentTimeString = timeToString(currentTime)
+                        currentTimeString = timeToString(currentTime, format: 1)
                     }
                     .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
                         // 앱이 백그라운드로 간 시각을 저장한다
@@ -76,7 +59,7 @@ struct WalkingView: View {
                         let startTime = UserDefaults.standard.object(forKey: "startTime") as? Date
                         let interval = now.timeIntervalSince(startTime ?? now)
                         currentTime += Int(interval)
-                        currentTimeString = timeToString(currentTime)
+                        currentTimeString = timeToString(currentTime, format: 1)
                     }
                 
                 // MARK: - CENTER

@@ -21,6 +21,14 @@ struct ResultView: View {
     @State private var steps: Int = 0
     @State private var memo: String = ""
     
+    init(walk: Walk, pushed: Binding<Bool>) {
+        self.walk = walk
+        self._pushed = pushed
+        
+        self.time = walk.time
+        self.steps = walk.steps
+    }
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
@@ -46,7 +54,7 @@ struct ResultView: View {
                         VStack(spacing: 20) {
                             HStack {
                                 VStack(alignment: .leading, spacing: 5) {
-                                    Text("\(time)분 \(time)초")
+                                    Text(timeToString(walk.time, format: 2))
                                         .font(.system(.title2))
                                     Text("시간")
                                 }
