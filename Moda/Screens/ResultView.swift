@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import RealmSwift
 
 struct ResultView: View {
     
@@ -79,12 +80,12 @@ struct ResultView: View {
                         .frame(height: 350)
                     
                     // Rounded Text Editor
-                    RoundedTextEditor(text: memo)
+                    RoundedTextEditor(memo: $memo)
                     
                     // Button
                     HStack {
                         Button("삭제하기") {
-                            
+                            self.pushed = false
                         }
                         .buttonStyle(CustomButton(colorName: "ColorDarkRed"))
                         

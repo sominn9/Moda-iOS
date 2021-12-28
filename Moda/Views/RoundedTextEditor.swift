@@ -9,7 +9,9 @@ import SwiftUI
 
 struct RoundedTextEditor: View {
     
-    @State var text: String
+    @Binding var memo: String
+    
+    @State var text: String = ""
     
     var body: some View {
         ZStack {
@@ -23,6 +25,7 @@ struct RoundedTextEditor: View {
                        .stroke(Color.secondary, lineWidth: 2)
                 )
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    memo = text
                     if self.text == "" {
                         self.text = "메모를 입력하세요"
                     }
@@ -36,15 +39,9 @@ struct RoundedTextEditor: View {
             Text(text).opacity(0).padding(.all, 8)
                 .onAppear {
                     if text == "" {
-                        text = "메모를 입력하세요" 
+                        text = "메모를 입력하세요"
                     }
                 }
         }
-    }
-}
-
-struct RoundedTextEditor_Previews: PreviewProvider {
-    static var previews: some View {
-        RoundedTextEditor(text: "")
     }
 }
