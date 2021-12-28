@@ -21,10 +21,14 @@ struct WalkingView: View {
     
     @Binding var pushed: Bool
     
+    @StateObject private var mapViewModel = MapViewModel()
+    
+    @State private var isActive = false
     @State private var isAnimating: Bool = false
     @State private var currentTime: Int = 0
     @State private var currentTimeString: String = "00:00:00"
     @State private var steps: Int = 0
+    @State private var walk = Walk()
         
     private func initializePedometer() {
         if isPedometerAvailable {
@@ -94,7 +98,7 @@ struct WalkingView: View {
                                 .foregroundColor(.white)
                                 .padding(.vertical, 15)
                             
-                            MapView()
+                            MapView(viewModel: self.mapViewModel)
                         }
                     }
                     .frame(height: 430, alignment: .center)
@@ -102,16 +106,32 @@ struct WalkingView: View {
                 Spacer()
                 
                 // MARK: - FOOTER
-                NavigationLink(destination: ResultView(pushed: $pushed)
-                                .navigationTitle("")
-                                .navigationBarHidden(true)) {
-                    Text("종료하기")
-                    
-                } //: FOOTER
-                .onTapGesture {
-                    self.timer.upstream.connect().cancel()
-                }
-                .buttonStyle(CustomButton(colorName: "ColorRed"))
+                NavigationLink(
+                    destination: ResultView(walk: self.walk, pushed: $pushed)
+                        .navigationTitle("")
+                        .navigationBarHidden(true),
+                    isActive: $isActive,
+                    label: {
+                        Text("종료하기")
+                    })
+                    .simultaneousGesture(TapGesture().onEnded { _ in
+                        // Stop the timer
+                        timer.upstream.connect().cancel()
+
+                        // Save the walking data
+                        walk.time = self.currentTime
+                        walk.steps = self.steps
+                        walk.points.append(objectsIn: mapViewModel.points.map { point in
+                            let location = Location()
+                            location.latitue = point.latitude
+                            location.longitude = point.longitude
+                            return location
+                        })
+                        
+                        // Go to result view
+                        self.isActive.toggle()
+                    })
+                    .buttonStyle(CustomButton(colorName: "ColorRed"))
                 
             } //: VSTACK
             .padding(.vertical, 10)

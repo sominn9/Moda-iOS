@@ -222,8 +222,8 @@
 			children = (
 				CB95B7882770488C00AC58B3 /* MenuButton.swift */,
 				CBECEE5427718F4400032BF9 /* CustomButton.swift */,
-				CBFEF01127759F23000682AB /* MapView.swift */,
 				CB93537A277A1D7100B0BDA7 /* RoundedTextEditor.swift */,
+				CBFEF01127759F23000682AB /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

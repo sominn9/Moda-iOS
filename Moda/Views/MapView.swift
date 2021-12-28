@@ -12,7 +12,7 @@ struct MapView: UIViewRepresentable {
     
     typealias UIViewType = MKMapView
     
-    @StateObject private var viewModel = MapViewModel()
+    @ObservedObject var viewModel: MapViewModel
     
     func makeCoordinator() -> MapViewCoordinator {
         return MapViewCoordinator()

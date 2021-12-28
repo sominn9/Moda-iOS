@@ -11,6 +11,10 @@ import RealmSwift
 
 struct ResultView: View {
     
+    let realm = try! Realm()
+    
+    let walk: Walk
+    
     @Binding var pushed: Bool
 
     @State private var time: Int = 0
@@ -24,6 +28,7 @@ struct ResultView: View {
                 ZStack(alignment: .center) {
                     Color("ColorRed")
                     
+                    // Title
                     HStack {
                         Text("Record")
                             .font(.system(size: 50))
@@ -35,6 +40,7 @@ struct ResultView: View {
                     .foregroundColor(.white)
                     .offset(y: -70)
                     
+                    // Text & Image
                     HStack {
                         // HStack Component1 (Text Section)
                         VStack(spacing: 20) {
@@ -75,21 +81,35 @@ struct ResultView: View {
                 
                 // MARK: - BOTTOM SECTION
                 VStack(spacing: 15) {
+                    let _ = print(Realm.Configuration.defaultConfiguration.fileURL!)
+                    
                     // Map
-                    MapView()
+                    MapView(viewModel: MapViewModel(with: walk.points.map { $0.coordinate }))
                         .frame(height: 350)
                     
                     // Rounded Text Editor
                     RoundedTextEditor(memo: $memo)
                     
-                    // Button
+                    // Button                    
                     HStack {
                         Button("삭제하기") {
+                            // Go to main screen
                             self.pushed = false
                         }
                         .buttonStyle(CustomButton(colorName: "ColorDarkRed"))
                         
                         Button("저장하기") {
+                            // Data save
+                            let diary = Diary()
+                            diary.walk = self.walk
+                            diary.memo = self.memo
+                            diary.publishDate = Date()
+                            
+                            try! realm.write{
+                                realm.add(diary)
+                            }
+                            
+                            // Go to main screen
                             self.pushed = false
                         }
                         .buttonStyle(CustomButton(colorName: "ColorRed"))
@@ -108,6 +128,6 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(pushed: .constant(true))
+        ResultView(walk: Walk(), pushed: .constant(true))
     }
 }
