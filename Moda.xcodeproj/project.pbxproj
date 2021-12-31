@@ -9,14 +9,16 @@
 /* Begin PBXBuildFile section */
 		5C7DBF155671F58C96A36125 /* Pods_Moda_ModaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17993514A0BD8466FCD62F74 /* Pods_Moda_ModaUITests.framework */; };
 		CB0B15E2277063FE00C8561C /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0B15E1277063FE00C8561C /* ResultView.swift */; };
+		CB2D2077277C32860071AE48 /* DBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D2076277C32860071AE48 /* DBViewModel.swift */; };
+		CB2D2079277C56220071AE48 /* DateToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D2078277C56220071AE48 /* DateToString.swift */; };
 		CB7049E3277AED0300B0BC66 /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7049E2277AED0300B0BC66 /* Walk.swift */; };
 		CB7049E6277B3C8800B0BC66 /* TimeToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7049E5277B3C8800B0BC66 /* TimeToString.swift */; };
+		CB7049E8277B775600B0BC66 /* DiaryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7049E7277B775600B0BC66 /* DiaryListView.swift */; };
 		CB74413A276C593000BF0A49 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB744139276C593000BF0A49 /* HomeView.swift */; };
 		CB93537427799D3100B0BDA7 /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93537327799D3100B0BDA7 /* Diary.swift */; };
 		CB9353792779AE1300B0BDA7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9353782779AE1300B0BDA7 /* Location.swift */; };
 		CB93537B277A1D7100B0BDA7 /* RoundedTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93537A277A1D7100B0BDA7 /* RoundedTextEditor.swift */; };
 		CB93537E277A257000B0BDA7 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93537D277A257000B0BDA7 /* View+Extension.swift */; };
-		CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95B7882770488C00AC58B3 /* MenuButton.swift */; };
 		CB95B78B277057D700AC58B3 /* WalkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95B78A277057D700AC58B3 /* WalkingView.swift */; };
 		CBE62CFD276C4BEC00A3CB35 /* ModaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */; };
 		CBE62CFF276C4BEC00A3CB35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62CFE276C4BEC00A3CB35 /* ContentView.swift */; };
@@ -58,15 +60,17 @@
 		5C04AF34AAC64A9DBC924628 /* Pods_ModaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AE9D201F6D91CC736C3470 /* Pods-Moda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moda.debug.xcconfig"; path = "Target Support Files/Pods-Moda/Pods-Moda.debug.xcconfig"; sourceTree = "<group>"; };
 		CB0B15E1277063FE00C8561C /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		CB2D2076277C32860071AE48 /* DBViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBViewModel.swift; sourceTree = "<group>"; };
+		CB2D2078277C56220071AE48 /* DateToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToString.swift; sourceTree = "<group>"; };
 		CB42BC95AE378EEF99199768 /* Pods_Moda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7049E2277AED0300B0BC66 /* Walk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
 		CB7049E5277B3C8800B0BC66 /* TimeToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeToString.swift; sourceTree = "<group>"; };
+		CB7049E7277B775600B0BC66 /* DiaryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryListView.swift; sourceTree = "<group>"; };
 		CB744139276C593000BF0A49 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CB93537327799D3100B0BDA7 /* Diary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
 		CB9353782779AE1300B0BDA7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		CB93537A277A1D7100B0BDA7 /* RoundedTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextEditor.swift; sourceTree = "<group>"; };
 		CB93537D277A257000B0BDA7 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
-		CB95B7882770488C00AC58B3 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		CB95B78A277057D700AC58B3 /* WalkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingView.swift; sourceTree = "<group>"; };
 		CBE62CF9276C4BEC00A3CB35 /* Moda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModaApp.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				CB7049E5277B3C8800B0BC66 /* TimeToString.swift */,
+				CB2D2078277C56220071AE48 /* DateToString.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -231,7 +236,6 @@
 		CBE62D26276C4BFD00A3CB35 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CB95B7882770488C00AC58B3 /* MenuButton.swift */,
 				CBECEE5427718F4400032BF9 /* CustomButton.swift */,
 				CB93537A277A1D7100B0BDA7 /* RoundedTextEditor.swift */,
 				CBFEF01127759F23000682AB /* MapView.swift */,
@@ -247,6 +251,7 @@
 				CB744139276C593000BF0A49 /* HomeView.swift */,
 				CB95B78A277057D700AC58B3 /* WalkingView.swift */,
 				CB0B15E1277063FE00C8561C /* ResultView.swift */,
+				CB7049E7277B775600B0BC66 /* DiaryListView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				CBF4EEA227784C5200563107 /* MapViewModel.swift */,
+				CB2D2076277C32860071AE48 /* DBViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -502,13 +508,15 @@
 				CBE62D29276C4C9300A3CB35 /* OnboardingView.swift in Sources */,
 				CB74413A276C593000BF0A49 /* HomeView.swift in Sources */,
 				CB93537427799D3100B0BDA7 /* Diary.swift in Sources */,
-				CB95B7892770488C00AC58B3 /* MenuButton.swift in Sources */,
+				CB7049E8277B775600B0BC66 /* DiaryListView.swift in Sources */,
 				CB7049E6277B3C8800B0BC66 /* TimeToString.swift in Sources */,
 				CBECEE5527718F4400032BF9 /* CustomButton.swift in Sources */,
+				CB2D2077277C32860071AE48 /* DBViewModel.swift in Sources */,
 				CB7049E3277AED0300B0BC66 /* Walk.swift in Sources */,
 				CBE62CFF276C4BEC00A3CB35 /* ContentView.swift in Sources */,
 				CB0B15E2277063FE00C8561C /* ResultView.swift in Sources */,
 				CBFEF01227759F23000682AB /* MapView.swift in Sources */,
+				CB2D2079277C56220071AE48 /* DateToString.swift in Sources */,
 				CB9353792779AE1300B0BDA7 /* Location.swift in Sources */,
 				CB93537B277A1D7100B0BDA7 /* RoundedTextEditor.swift in Sources */,
 				CB93537E277A257000B0BDA7 /* View+Extension.swift in Sources */,
