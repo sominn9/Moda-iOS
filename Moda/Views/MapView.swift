@@ -24,6 +24,7 @@ struct MapView: UIViewRepresentable {
         mapView.delegate = context.coordinator
         mapView.tintColor = .systemPink
         mapView.setUserTrackingMode(.follow, animated: true)
+        mapView.overrideUserInterfaceStyle = .dark
 
         // Request permission
         viewModel.checkIfLocationServiceEnabled()

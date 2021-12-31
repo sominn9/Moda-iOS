@@ -11,9 +11,9 @@ class MapViewModel: NSObject, ObservableObject {
     
     var locationManager: CLLocationManager?
     
-    @Published var points: [CLLocationCoordinate2D]
+    @Published var points = [CLLocationCoordinate2D]()
     
-    init(with points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()) {
+    func setUpInitialPoints(with points: [CLLocationCoordinate2D]) {
         self.points = points
     }
     
