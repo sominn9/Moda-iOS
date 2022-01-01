@@ -1,5 +1,5 @@
 //
-//  ResultView.swift
+//  DetailView.swift
 //  Moda
 //
 //  Created by 신소민 on 2021/12/20.
@@ -9,11 +9,11 @@ import SwiftUI
 import MapKit
 import RealmSwift
 
-struct ResultView: View {
+struct DetailView: View {
     
     @EnvironmentObject private var dbViewModel: DBViewModel
     
-    @Binding var pushed: Bool
+    @Binding var isShowDetailView: Bool
     
     @State private var memo: String = ""
     
@@ -21,29 +21,57 @@ struct ResultView: View {
         ScrollView {
             VStack(spacing: 0) {
                 // MARK: - UPPER SECTION
-                ZStack(alignment: .center) {
+                ZStack(alignment: .top) {
  
                     Color.clear
                     
-                    // Title
+                    // Back Button
                     HStack {
-                        Text("Record")
-                            .font(.system(size: 60, weight: .bold))
+                        Button(action: {
+                            // Go to diary list screen
+                            self.isShowDetailView.toggle()
+                            
+                        }, label: {
+                            Image(systemName: "chevron.backward")
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 20)
+                        })
                         Spacer()
+                    }
+                    .offset(y: 70)
+                    
+                    // Title & Publish Date
+                    VStack {
+                        HStack {
+                            Text("Record")
+                                .font(.system(size: 60, weight: .bold))
+                            Spacer()
+                        }
+                        HStack {
+                            Text(dateToString(date: dbViewModel.publishDate ?? Date()))
+                                .foregroundColor(.gray)
+                            Spacer()
+                        }
                     }
                     .foregroundColor(.white)
                     .padding(.leading, 20)
+                    .offset(y: UIScreen.main.bounds.height/6.5)
 
                 } //: ZSTACK
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: UIScreen.main.bounds.height/2, maxHeight: .infinity)
                 .background {
                     Rectangle()
                         .fill(Color(.black).opacity(0.8))
-                        .cornerRadius(30, corners: [.bottomLeft, .bottomRight])
                 }
-                .overlay(alignment: .bottom) {
+                .overlay(alignment: .bottomLeading) {
+                    
+                    Image("bao-black-kitten-2")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: UIScreen.main.bounds.height/3)
+                        .offset(x: UIScreen.main.bounds.width/2, y: 100)
 
-                    HStack {
+                    VStack {
                         
                         Spacer()
                         VStack(alignment: .center, spacing: 5) {
@@ -64,10 +92,10 @@ struct ResultView: View {
                         Spacer()
                         
                     } //: HSTACK
-                    .frame(width: UIScreen.main.bounds.width - 40, height: 100)
+                    .frame(width: UIScreen.main.bounds.width/2, height: 200)
                     .background(RoundedRectangle(cornerRadius: 10).fill(Color(UIColor.systemBackground)))
                     .shadow(radius: 10)
-                    .offset(y: 50)
+                    .offset(y: 70)
                     .padding()
                     
                 } //: ZSTACK OVERLAY
@@ -85,13 +113,15 @@ struct ResultView: View {
                     MapView(viewModel: MapViewModel(with: dbViewModel.walk.points.map { $0.coordinate }))
                         .frame(height: 350)
                     
-                    // Button                    
+                    // Button
                     HStack {
                         
                         Button(action: {
                             
-                            // Go to main screen
-                            self.pushed.toggle()
+                            dbViewModel.deleteData(object: dbViewModel.updateObject!)
+                            
+                            // Go to diary list screen
+                            self.isShowDetailView.toggle()
                             
                         }, label: {
                             Circle()
@@ -108,8 +138,8 @@ struct ResultView: View {
                             dbViewModel.memo = self.memo
                             dbViewModel.addData()
                     
-                            // Go to main screen
-                            self.pushed.toggle()
+                            // Go to diary list screen
+                            self.isShowDetailView.toggle()
                         }
                         .buttonStyle(CustomButton(colorName: "ColorBlack", colorOpacity: 0.85))
                         
@@ -121,6 +151,7 @@ struct ResultView: View {
                 .padding(.bottom, 30)
                 
             } //: VSTACK
+            
         }  //: SCROLL
         .ignoresSafeArea()
         .navigationTitle("")
@@ -128,12 +159,16 @@ struct ResultView: View {
         .onTapGesture {
             self.endTextEditing()
         }
+        .onAppear {
+            dbViewModel.setUpInitialData()
+            memo = dbViewModel.memo
+        }
     }
 }
 
-struct ResultView_Previews: PreviewProvider {
+struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(pushed: .constant(true))
+        DetailView(isShowDetailView: .constant(true))
             .environmentObject(DBViewModel())
     }
 }

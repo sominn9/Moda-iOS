@@ -21,6 +21,8 @@ struct WalkingView: View {
     
     @Binding var pushed: Bool
     
+    @EnvironmentObject private var dbViewModel: DBViewModel
+    
     @StateObject private var mapViewModel = MapViewModel()
     
     @State private var isActive = false
@@ -28,7 +30,6 @@ struct WalkingView: View {
     @State private var currentTime: Int = 0
     @State private var currentTimeString: String = "00:00:00"
     @State private var steps: Int = 0
-    @State private var walk = Walk()
         
     private func initializePedometer() {
         if isPedometerAvailable {
@@ -65,19 +66,19 @@ struct WalkingView: View {
                 // MARK: - CENTER
                 Spacer()
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color("ColorRed"))
+                    .fill(Color("ColorBlack"))
                     .background(content: {
                         Image("bao-black-kitten-2")
                             .resizable()
                             .scaledToFit()
-                            .padding()
-                            .offset(y: isAnimating ? -130 : -50)
+                            .padding(40)
+                            .offset(y: isAnimating ? -150 : -100)
                             .animation(.easeOut(duration: 2), value: isAnimating)
                     })
                     .overlay(alignment: .center) {
                         VStack(spacing: 0) {
-                            Text("걸음수: \(steps)")
-                                .font(.system(size: 17, weight: .regular))
+                            Text("걸음 수: \(steps)")
+                                .font(.system(size: 18, weight: .regular))
                                 .foregroundColor(.white)
                                 .padding(.vertical, 15)
                             
@@ -90,9 +91,8 @@ struct WalkingView: View {
                 
                 // MARK: - FOOTER
                 NavigationLink(
-                    destination: ResultView(walk: self.walk, pushed: $pushed)
-                        .navigationTitle("")
-                        .navigationBarHidden(true),
+                    destination: ResultView(pushed: $pushed)
+                        .environmentObject(dbViewModel),
                     isActive: $isActive,
                     label: {
                         Text("종료하기")
@@ -100,8 +100,12 @@ struct WalkingView: View {
                     .simultaneousGesture(TapGesture().onEnded { _ in
                         // Stop the timer
                         timer.upstream.connect().cancel()
+                        
+                        // Stop the pedometer
+                        pedometer.stopUpdates()
 
                         // Save the walking data
+                        let walk = Walk()
                         walk.time = self.currentTime
                         walk.steps = self.steps
                         walk.points.append(objectsIn: mapViewModel.points.map { point in
@@ -111,10 +115,12 @@ struct WalkingView: View {
                             return location
                         })
                         
+                        dbViewModel.walk = walk
+                          
                         // Go to result view
                         self.isActive.toggle()
                     })
-                    .buttonStyle(CustomButton(colorName: "ColorRed"))
+                    .buttonStyle(CustomButton(colorName: "ColorRed", colorOpacity: 1.0))
                 
             } //: VSTACK
             .padding(.vertical, 10)
@@ -131,5 +137,6 @@ struct WalkingView: View {
 struct WalkingView_Previews: PreviewProvider {
     static var previews: some View {
         WalkingView(pushed: .constant(true))
+            .environmentObject(DBViewModel())
     }
 }
