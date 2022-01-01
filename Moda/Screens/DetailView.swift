@@ -110,7 +110,8 @@ struct DetailView: View {
                         .background(Color(uiColor: .systemBackground))
                     
                     // Map
-                    MapView(viewModel: MapViewModel(with: dbViewModel.walk.points.map { $0.coordinate }))
+                    MapView(viewModel: MapViewModel(with: dbViewModel.walk.points.map { $0.coordinate }),
+                            startLocationService: false)
                         .frame(height: 350)
                     
                     // Button

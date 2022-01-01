@@ -40,7 +40,7 @@ class MapViewModel: NSObject, ObservableObject {
         case .denied:
             print("Location service is denied")
         case .authorizedAlways, .authorizedWhenInUse:
-            points.append(locationManager.location!.coordinate)
+            break
         @unknown default:
             break
         }

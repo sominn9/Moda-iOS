@@ -14,6 +14,13 @@ struct MapView: UIViewRepresentable {
     
     @ObservedObject var viewModel: MapViewModel
     
+    private let startLocationService: Bool
+    
+    init(viewModel: MapViewModel, startLocationService: Bool) {
+        self.viewModel = viewModel
+        self.startLocationService = startLocationService
+    }
+    
     func makeCoordinator() -> MapViewCoordinator {
         return MapViewCoordinator()
     }
@@ -27,7 +34,9 @@ struct MapView: UIViewRepresentable {
         mapView.overrideUserInterfaceStyle = .dark
 
         // Request permission
-        viewModel.checkIfLocationServiceEnabled()
+        if startLocationService {
+            viewModel.checkIfLocationServiceEnabled()
+        }
         
         drawRoute(mapView)
         return mapView

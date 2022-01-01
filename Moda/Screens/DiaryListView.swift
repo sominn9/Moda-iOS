@@ -27,7 +27,8 @@ struct DiaryListView: View {
                             .font(.caption)
                             .foregroundColor(.gray)
                         
-                        MapView(viewModel: MapViewModel(with: diary.walk!.points.map { $0.coordinate }))
+                        MapView(viewModel: MapViewModel(with: diary.walk!.points.map { $0.coordinate }),
+                                startLocationService: false)
                             .frame(height: 200)
                         
                     }) //: VSTACK

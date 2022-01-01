@@ -82,7 +82,8 @@ struct WalkingView: View {
                                 .foregroundColor(.white)
                                 .padding(.vertical, 15)
                             
-                            MapView(viewModel: self.mapViewModel)
+                            MapView(viewModel: self.mapViewModel,
+                                    startLocationService: true)
                         }
                     }
                     .frame(height: 430, alignment: .center)
