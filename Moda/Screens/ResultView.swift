@@ -16,6 +16,7 @@ struct ResultView: View {
     @Binding var pushed: Bool
     
     @State private var memo: String = ""
+    @State private var isShowAlert: Bool = false
     
     var body: some View {
         ScrollView {
@@ -47,7 +48,7 @@ struct ResultView: View {
                         
                         Spacer()
                         VStack(alignment: .center, spacing: 5) {
-                            Text(timeToString(dbViewModel.walk.time, format: 2))
+                            Text(timeToString(dbViewModel.walk.time, format: 2) == "" ? "0" : timeToString(dbViewModel.walk.time, format: 2))
                                 .font(.system(size: 20, weight: .bold))
                             Text("시간")
                                 .font(.caption)
@@ -91,8 +92,8 @@ struct ResultView: View {
                         
                         Button(action: {
                             
-                            // Go to main screen
-                            self.pushed.toggle()
+                            // Show thw alert
+                            isShowAlert.toggle()
                             
                         }, label: {
                             Circle()
@@ -128,6 +129,22 @@ struct ResultView: View {
         .navigationBarHidden(true)
         .onTapGesture {
             self.endTextEditing()
+        }
+        .alert(isPresented: $isShowAlert) {
+            Alert(
+                title: Text("알림"),
+                message: Text("삭제하시겠습니까?"),
+                primaryButton: .destructive(
+                    Text("삭제"),
+                    action: {
+                        // Go to main screen
+                        self.pushed.toggle()
+                    }
+                ),
+                secondaryButton: .default(
+                    Text("취소")
+                )
+            )
         }
     }
 }

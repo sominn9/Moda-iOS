@@ -89,4 +89,10 @@ class DBViewModel: ObservableObject {
         publishDate = updateObject.publishDate
     }
     
+    func deInitData() {
+        walk = Walk()
+        memo = ""
+        publishDate = nil
+    }
+    
 }

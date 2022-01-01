@@ -16,6 +16,7 @@ struct DetailView: View {
     @Binding var isShowDetailView: Bool
     
     @State private var memo: String = ""
+    @State private var isShowAlert: Bool = false
     
     var body: some View {
         ScrollView {
@@ -75,7 +76,7 @@ struct DetailView: View {
                         
                         Spacer()
                         VStack(alignment: .center, spacing: 5) {
-                            Text(timeToString(dbViewModel.walk.time, format: 2))
+                            Text(timeToString(dbViewModel.walk.time, format: 2) == "" ? "0" : timeToString(dbViewModel.walk.time, format: 2))
                                 .font(.system(size: 20, weight: .bold))
                             Text("시간")
                                 .font(.caption)
@@ -119,10 +120,8 @@ struct DetailView: View {
                         
                         Button(action: {
                             
-                            dbViewModel.deleteData(object: dbViewModel.updateObject!)
-                            
-                            // Go to diary list screen
-                            self.isShowDetailView.toggle()
+                            // Show thw alert
+                            isShowAlert.toggle()
                             
                         }, label: {
                             Circle()
@@ -163,6 +162,31 @@ struct DetailView: View {
         .onAppear {
             dbViewModel.setUpInitialData()
             memo = dbViewModel.memo
+        }
+        .alert(isPresented: $isShowAlert) {
+            Alert(
+                title: Text("알림"),
+                message: Text("삭제하시겠습니까?"),
+                primaryButton: .destructive(
+                    Text("삭제"),
+                    action: {
+                        
+                        // Delete data
+                        dbViewModel.deInitData()
+                        dbViewModel.deleteData(object: dbViewModel.updateObject!)
+                        
+                        // Go to diary list screen
+                        self.isShowDetailView.toggle()
+                        
+                    }
+                ),
+                secondaryButton: .default(
+                    Text("취소")
+                )
+            )
+        }
+        .onDisappear {
+            dbViewModel.updateObject = nil
         }
     }
 }
