@@ -80,6 +80,23 @@ class DBViewModel: ObservableObject {
         }
     }
     
+    func deleteData(with indexSet: IndexSet) {
+        guard let realm = try? Realm() else { return }
+        
+        indexSet.forEach { index in
+            
+            try? realm.write {
+                
+                realm.delete(diaries[index])
+                
+                // Updating UI
+                fetchData()
+            }
+        }
+    }
+    
+    // MARK: - Init & Deinit
+    
     func setUpInitialData() {
         guard let updateObject = updateObject else { return }
         

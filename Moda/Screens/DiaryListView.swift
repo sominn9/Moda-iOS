@@ -14,9 +14,9 @@ struct DiaryListView: View {
     @State var isShowDetailView: Bool = false
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 15) {
-                
+        VStack(spacing: 15) {
+            
+            List {
                 ForEach(dbViewModel.diaries, id:\.self) { (diary: Diary) in
                     VStack(alignment: .leading, spacing: 10, content: {
                         
@@ -51,7 +51,9 @@ struct DiaryListView: View {
                         })
                         
                         Button(action: {
-                            dbViewModel.deleteData(object: diary)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                                dbViewModel.deleteData(object: diary)
+                            }
                         }, label: {
                             Text("일기 삭제")
                         })
@@ -62,16 +64,20 @@ struct DiaryListView: View {
                             destination: DetailView(isShowDetailView: self.$isShowDetailView)
                                 .environmentObject(dbViewModel),
                             isActive: $isShowDetailView) {
-                               EmptyView()
-                        }
+                                EmptyView()
+                            }
+                            .hidden()
                     )
                 } //: FOREACH
-                .listStyle(.grouped)
+                .onDelete { indexSet in
+                    dbViewModel.deleteData(with: indexSet)
+                }
                 
-            } //: VSTACK
-            .padding()
-            
-        } //: SCROLL
+            } //: LIST
+            .listStyle(.grouped)
+            .listRowBackground(Color.clear)
+                
+        } //: VSTACK
         .toolbar {
             HStack {
                 Spacer()
@@ -83,6 +89,11 @@ struct DiaryListView: View {
             }
         }
         .onAppear {
+            
+            UITableView.appearance().backgroundColor = .clear
+            UITableView.appearance().separatorColor = .clear
+            
+            // Fetch diaries
             dbViewModel.fetchData()
         }
     }
