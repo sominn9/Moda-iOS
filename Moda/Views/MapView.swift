@@ -13,12 +13,14 @@ struct MapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
     @ObservedObject var viewModel: MapViewModel
-    
+        
     private let startLocationService: Bool
+    private let userInteractionEnabled: Bool
     
-    init(viewModel: MapViewModel, startLocationService: Bool) {
+    init(viewModel: MapViewModel, startLocationService: Bool, userInteractionEnabled: Bool = true) {
         self.viewModel = viewModel
         self.startLocationService = startLocationService
+        self.userInteractionEnabled = userInteractionEnabled
     }
     
     func makeCoordinator() -> MapViewCoordinator {
@@ -30,12 +32,18 @@ struct MapView: UIViewRepresentable {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
         mapView.tintColor = .systemPink
-        mapView.setUserTrackingMode(.follow, animated: true)
         mapView.overrideUserInterfaceStyle = .dark
-
-        // Request permission
+        
         if startLocationService {
+            mapView.showsUserLocation = true
+            mapView.setUserTrackingMode(.follow, animated: true)
+            
+            // Request permission
             viewModel.checkIfLocationServiceEnabled()
+        }
+        
+        if !userInteractionEnabled {
+            mapView.isUserInteractionEnabled = false
         }
         
         drawRoute(mapView)
@@ -47,13 +55,14 @@ struct MapView: UIViewRepresentable {
     }
     
     private func drawRoute(_ view: MKMapView) {
+  
         if let destination = viewModel.points.last {
             // Set the region
             let region = MKCoordinateRegion(
                 center: destination,
-                span: .init(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
             )
-            view.setRegion(region, animated: false)
+            view.setRegion(region, animated: true)
         }
         
         if viewModel.points.count != 0 {
