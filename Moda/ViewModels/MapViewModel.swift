@@ -21,11 +21,10 @@ class MapViewModel: NSObject, ObservableObject {
         if CLLocationManager.locationServicesEnabled() {
             locationManager = CLLocationManager()
             locationManager?.delegate = self
+            locationManager?.activityType = .fitness
             locationManager?.allowsBackgroundLocationUpdates = true
             locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager?.startMonitoringSignificantLocationChanges()
-        } else {
-            // Show an alert letting them know location service if off
+            locationManager?.startUpdatingLocation()
         }
     }
     
