@@ -21,6 +21,8 @@
 		CB93537E277A257000B0BDA7 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93537D277A257000B0BDA7 /* View+Extension.swift */; };
 		CB94344A277F5CE600C114E1 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB943449277F5CE600C114E1 /* DetailView.swift */; };
 		CB95B78B277057D700AC58B3 /* WalkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB95B78A277057D700AC58B3 /* WalkingView.swift */; };
+		CBA79AFA27B7FF8E0045A367 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA79AF927B7FF8E0045A367 /* HealthKit.framework */; };
+		CBA79AFF27B800820045A367 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA79AFE27B800820045A367 /* HealthKitManager.swift */; };
 		CBE62CFD276C4BEC00A3CB35 /* ModaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */; };
 		CBE62CFF276C4BEC00A3CB35 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE62CFE276C4BEC00A3CB35 /* ContentView.swift */; };
 		CBE62D01276C4BED00A3CB35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBE62D00276C4BED00A3CB35 /* Assets.xcassets */; };
@@ -74,6 +76,9 @@
 		CB93537D277A257000B0BDA7 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		CB943449277F5CE600C114E1 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		CB95B78A277057D700AC58B3 /* WalkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingView.swift; sourceTree = "<group>"; };
+		CBA79AF927B7FF8E0045A367 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		CBA79AFB27B800180045A367 /* Moda.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moda.entitlements; sourceTree = "<group>"; };
+		CBA79AFE27B800820045A367 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		CBE62CF9276C4BEC00A3CB35 /* Moda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModaApp.swift; sourceTree = "<group>"; };
 		CBE62CFE276C4BEC00A3CB35 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA79AFA27B7FF8E0045A367 /* HealthKit.framework in Frameworks */,
 				FE777BA7A255A82901A17F24 /* Pods_Moda.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +143,7 @@
 		A20EF298045A1C57059FE8F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CBA79AF927B7FF8E0045A367 /* HealthKit.framework */,
 				CB42BC95AE378EEF99199768 /* Pods_Moda.framework */,
 				17993514A0BD8466FCD62F74 /* Pods_Moda_ModaUITests.framework */,
 				5C04AF34AAC64A9DBC924628 /* Pods_ModaTests.framework */,
@@ -171,6 +178,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CBA79B0027B800BE0045A367 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CBA79AFE27B800820045A367 /* HealthKitManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		CBE62CF0276C4BEC00A3CB35 = {
 			isa = PBXGroup;
 			children = (
@@ -196,9 +211,11 @@
 		CBE62CFB276C4BEC00A3CB35 /* Moda */ = {
 			isa = PBXGroup;
 			children = (
+				CBA79AFB27B800180045A367 /* Moda.entitlements */,
 				CBF4EEA0277841AC00563107 /* Info.plist */,
 				CBE62CFC276C4BEC00A3CB35 /* ModaApp.swift */,
 				CBE62D00276C4BED00A3CB35 /* Assets.xcassets */,
+				CBA79B0027B800BE0045A367 /* Managers */,
 				CB7049E4277B3C4D00B0BC66 /* Utilities */,
 				CBE62D26276C4BFD00A3CB35 /* Views */,
 				CB935372277975CB00B0BDA7 /* Models */,
@@ -524,6 +541,7 @@
 				CB93537B277A1D7100B0BDA7 /* RoundedTextEditor.swift in Sources */,
 				CB93537E277A257000B0BDA7 /* View+Extension.swift in Sources */,
 				CB94344A277F5CE600C114E1 /* DetailView.swift in Sources */,
+				CBA79AFF27B800820045A367 /* HealthKitManager.swift in Sources */,
 				CBE62CFD276C4BEC00A3CB35 /* ModaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,6 +701,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Moda/Moda.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moda/Preview Content\"";
@@ -690,8 +709,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moda/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires to access health data.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires to access location data.";
-				INFOPLIST_KEY_NSMotionUsageDescription = "This app requires to access motion data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -717,6 +736,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Moda/Moda.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moda/Preview Content\"";
@@ -724,8 +744,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Moda/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This app requires to access health data.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requires to access location data.";
-				INFOPLIST_KEY_NSMotionUsageDescription = "This app requires to access motion data.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
