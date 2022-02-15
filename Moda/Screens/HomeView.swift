@@ -69,52 +69,53 @@ private extension HomeView {
     }
     
     var recordButton: some View {
-        NavigationLink(
-            destination: WalkingView(pushed: self.$pushed)
-                .environmentObject(dbViewModel)
-                .navigationTitle("")
-                .navigationBarHidden(true),
-            isActive: self.$pushed,
-            label: {
-                ZStack(alignment: .bottom) {
-                    
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color("ColorRed"))
-                        .frame(height: UIScreen.main.bounds.height * 0.3)
-                        .overlay(alignment: .center) {
+        VStack {
+            Spacer()
+            
+            NavigationLink(
+                destination: WalkingView(pushed: self.$pushed)
+                    .environmentObject(dbViewModel)
+                    .navigationTitle("")
+                    .navigationBarHidden(true),
+                isActive: self.$pushed,
+                label: {
+                    ZStack(alignment: .center) {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(Color("ColorRed"))
+                            .frame(height: UIScreen.main.bounds.height * 0.3)
+                            .overlay(alignment: .center) {
+                                
+                                Text("산책 시작")
+                                    .font(.system(size: 17, weight: .regular))
+                                    .foregroundColor(.white)
+                                    .offset(y: UIScreen.main.bounds.height * 0.3 * 0.25)
+                                    .opacity(0.9)
+                                
+                                Image("pattern1")
+                                    .resizable()
+                                    .scaleEffect(CGSize(width: 1.0, height: -1.0))
+                                    .offset(x: -(UIScreen.main.bounds.width * 0.35), y: -100)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                                    .opacity(0.3)
+                                
+                                Image("pattern2")
+                                    .resizable()
+                                    .offset(x: UIScreen.main.bounds.width * 0.35, y: -100)
+                                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                                    .opacity(0.3)
                             
-                            Text("산책 시작")
-                                .font(.system(size: 17, weight: .regular))
-                                .foregroundColor(.white)
-                                .offset(y: UIScreen.main.bounds.height * 0.3 * 0.25)
-                                .opacity(0.9)
-                            
-                            Image("pattern1")
-                                .resizable()
-                                .scaleEffect(CGSize(width: 1.0, height: -1.0))
-                                .offset(x: -(UIScreen.main.bounds.width * 0.35), y: -100)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .opacity(0.3)
-                            
-                            Image("pattern2")
-                                .resizable()
-                                .offset(x: UIScreen.main.bounds.width * 0.35, y: -100)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .opacity(0.3)
+                            } //: OVERLAY
                         
-                        } //: OVERLAY
-                    
-                    Image("bao-black-kitten-4")
-                        .resizable()
-                        .scaledToFit()
-                        .padding(UIScreen.main.bounds.width * 0.1)
-                        .offset(y: isAnimating ? -60 : -50)
-                        .animation(.easeInOut(duration: 4).repeatForever(), value: isAnimating)
-                    
-                }
-                .frame(height: UIScreen.main.bounds.height * 0.4)
-            }
-        ) //: NAVIGATION LINK
+                        Image("bao-black-kitten-4")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: UIScreen.main.bounds.height/4)
+                            .offset(y: isAnimating ?  -UIScreen.main.bounds.height/8 : -(UIScreen.main.bounds.height/8 + 10))
+                            .animation(.easeInOut(duration: 4).repeatForever(), value: isAnimating)
+                    }
+                })
+        }
+        .frame(height: UIScreen.main.bounds.height * 0.4)
     }
     
     var historyButton: some View {
@@ -141,8 +142,8 @@ private extension HomeView {
                             .grayscale(1)
                             .frame(minWidth: 0, maxWidth: .infinity)
                             .opacity(0.1)
-                            .padding(30)
-                            .offset(x: -(UIScreen.main.bounds.width * 0.35), y: -50)
+                            .padding(50)
+                            .offset(x: -(UIScreen.main.bounds.width * 0.35), y: -70)
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                     }
             }
