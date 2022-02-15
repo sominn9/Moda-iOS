@@ -37,7 +37,7 @@ struct OnboardingView: View {
                 ZStack {
                     Circle()
                         .fill(Color.gray)
-                        .frame(width: 340, height: 340, alignment: .center)
+                        .frame(width: UIScreen.main.bounds.height * 0.4, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
                         .opacity(isAnimating ? 0.2 : 0)
                         .scaleEffect(isAnimating ? 1 : 0.5)
                         .animation(.easeOut(duration: 1), value: isAnimating)

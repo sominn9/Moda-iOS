@@ -9,15 +9,19 @@ import SwiftUI
 
 struct DiaryListView: View {
     
+    @Environment(\.presentationMode) var presentation
+    
     @EnvironmentObject private var dbViewModel: DBViewModel
     
-    @State var isShowDetailView: Bool = false
+    @State var isDetailView: Bool = false
     
     var body: some View {
         VStack(spacing: 15) {
             
             List {
+                
                 ForEach(dbViewModel.diaries, id:\.self) { (diary: Diary) in
+                    
                     VStack(alignment: .leading, spacing: 10, content: {
                         
                         Text(diary.memo == "" ? "메모 없음" : diary.memo)
@@ -28,8 +32,9 @@ struct DiaryListView: View {
                             .foregroundColor(.gray)
                         
                         MapView(viewModel: MapViewModel(with: diary.walk!.points.map { $0.coordinate }),
-                                startLocationService: false)
-                            .frame(height: 200)
+                                startLocationService: false,
+                                userInteractionEnabled: false)
+                            .frame(height: UIScreen.main.bounds.height * 0.3)
                         
                     }) //: VSTACK
                     .frame(maxWidth:. infinity, alignment: .leading)
@@ -39,15 +44,15 @@ struct DiaryListView: View {
                     .contentShape(RoundedRectangle(cornerRadius: 10))
                     .onTapGesture {
                         dbViewModel.updateObject = diary
-                        isShowDetailView = true
+                        isDetailView = true
                     }
                     .contextMenu(menuItems: {
                         
                         Button(action: {
                             dbViewModel.updateObject = diary
-                            isShowDetailView = true
+                            isDetailView = true
                         }, label: {
-                            Text("일기 수정")
+                            Label("일기 수정", systemImage: "pencil")
                         })
                         
                         Button(action: {
@@ -55,19 +60,20 @@ struct DiaryListView: View {
                                 dbViewModel.deleteData(object: diary)
                             }
                         }, label: {
-                            Text("일기 삭제")
+                            Label("일기 삭제", systemImage: "trash")
                         })
                         
                     })
                     .background(
                         NavigationLink(
-                            destination: DetailView(isShowDetailView: self.$isShowDetailView)
+                            destination: DetailView()
                                 .environmentObject(dbViewModel),
-                            isActive: $isShowDetailView) {
+                            isActive: $isDetailView) {
                                 EmptyView()
                             }
                             .hidden()
                     )
+                    
                 } //: FOREACH
                 .onDelete { indexSet in
                     dbViewModel.deleteData(with: indexSet)
@@ -88,6 +94,15 @@ struct DiaryListView: View {
                 }
             }
         }
+        .gesture(
+            DragGesture(minimumDistance: 10, coordinateSpace: .local)
+                .onEnded({ value in
+                    if value.translation.width > 0 {
+                        // Go to the main
+                        presentation.wrappedValue.dismiss()
+                    }
+                })
+        )
         .onAppear {
             
             UITableView.appearance().backgroundColor = .clear

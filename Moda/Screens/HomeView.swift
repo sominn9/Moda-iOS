@@ -80,13 +80,13 @@ private extension HomeView {
                     
                     RoundedRectangle(cornerRadius: 20)
                         .fill(Color("ColorRed"))
-                        .frame(height: UIScreen.main.bounds.height * 0.25)
+                        .frame(height: UIScreen.main.bounds.height * 0.3)
                         .overlay(alignment: .center) {
                             
                             Text("산책 시작")
                                 .font(.system(size: 17, weight: .regular))
                                 .foregroundColor(.white)
-                                .offset(y: UIScreen.main.bounds.height * 0.25 * 0.25)
+                                .offset(y: UIScreen.main.bounds.height * 0.3 * 0.25)
                                 .opacity(0.9)
                             
                             Image("pattern1")
@@ -119,22 +119,20 @@ private extension HomeView {
     
     var historyButton: some View {
         NavigationLink(
-            destination: {
-                DiaryListView()
-                    .environmentObject(dbViewModel)
-                    .navigationTitle("Diary")
-                    .navigationBarTitleDisplayMode(.large)
-                    .navigationBarBackButtonHidden(false)
-            },
+            destination: DiaryListView()
+                .environmentObject(dbViewModel)
+                .navigationTitle("Diary")
+                .navigationBarTitleDisplayMode(.large)
+                .navigationBarBackButtonHidden(false),
             label: {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.black.opacity(0.85))
-                    .frame(height: UIScreen.main.bounds.height * 0.25)
+                    .frame(height: UIScreen.main.bounds.height * 0.3)
                     .overlay {
                         Text("산책 기록보기")
                             .font(.system(size: 17, weight: .regular))
                             .foregroundColor(.white)
-                            .offset(y: UIScreen.main.bounds.height * 0.25 * 0.25)
+                            .offset(y: UIScreen.main.bounds.height * 0.3 * 0.25)
                             .opacity(0.9)
                         
                         Image("book")
